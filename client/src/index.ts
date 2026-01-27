@@ -1,8 +1,22 @@
 import { Terminal } from '@xterm/xterm';
-function doit(){
-  const term = new Terminal({cols:200,rows:40});
+import { FitAddon } from '@xterm/addon-fit';
 
-  term.open(document.getElementById('xterm-container')!); 
+function doit(){
+  const term = new Terminal();
+  const fitAddon = new FitAddon();
+  term.loadAddon(fitAddon);
+
+  const container = document.getElementById('xterm-container')!;
+  term.open(container); 
+  
+  // Fit the terminal to its container
+  fitAddon.fit();
+  
+  // Refit on window resize
+  window.addEventListener('resize', () => {
+    fitAddon.fit();
+  });
+  
   term.write('*')
   term.onResize(({rows,cols})=>console.log(`resize ${rows} , ${cols}`))
   for (let i=0;i<40;i++){
