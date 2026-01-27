@@ -1,0 +1,25 @@
+{
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "build": "node build.ts"
+    },
+    "scriptsmon": {
+      "build": [
+        "build.ts", 
+        "src",
+        "package.json"
+      ],
+      "#dev":["build"] 
+    },
+    "devDependencies": {
+        "@types/chrome": "^0.0.277",
+        "@types/he": "^1.2.3",
+        "@types/lodash.isequal": "^4.5.8"
+    },
+    "dependencies": {
+        "@xterm/xterm": "^6.0.0",
+        "@xterm/addon-fit": "^0.11.0",
+        "lodash.isequal": "^4.5.0"
+    }
+}

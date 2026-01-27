@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "ES2022",
+    /* Modules */
+    "esModuleInterop": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    /* JavaScript Support */
+    "allowJs": true,
+    /* Emit */
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "types",
+    "rootDir": ".",
+    "sourceMap": true,
+    /* Interop Constraints */
+    "allowImportingTsExtensions": false,
+    /* Type Checking */
+    "noUncheckedIndexedAccess": true,
+    "strict": true,
+    "strictNullChecks": true,
+    /* Completeness */
+    "skipLibCheck": true
+  },
+  "include": [
+    "**/src/*",
+    "bin",
+    "build.ts",
+    "eslint.config.mjs",
+    "main/build.ts",
+    "client/build.ts",
+    "client/src",
+    "./client/resources/icons.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "types/*" 
+  ]
+}

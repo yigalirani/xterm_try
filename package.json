@@ -1,0 +1,145 @@
+{
+    "name": "Scriptsmon",
+    "publisher": "yigal",
+    "version": "1.0.0",
+    "description": "",
+    "license": "ISC",
+    "author": "",
+    "type": "module",
+    "main": "dist/extension.js",
+    "types": "types/src/extension.d.ts",
+    "scripts": {
+        "tsc": "tsc",
+        "eslint": "eslint . --color --max-warnings=0",
+        "oxlinttypeaware": "oxlint . --type-aware",
+        "oxlint": "oxlint ",
+        "biome": "biome lint",
+        "server":"npx  http-server client/resources"
+    },
+    "workspaces": [
+        "client"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "scriptsmon": {
+        "$build": [
+            "src",
+            "package.json",
+            "./bin/run_build.ts"
+        ],
+        "$lint": [
+            "$build",
+            "client/src",
+            "tsconfig.json",
+            "eslint.config.mjs"
+        ],
+        "eslint": "$lint",
+        "test": "./dist/test.js",
+        "build": "$build",
+        "tsc": "$lint",
+        "oxlint,oxlinttypeaware": [
+            "$lint",
+            ".oxlintrc.json"
+        ],
+        "biome": [
+            "$lint",
+            "biome.json"
+        ],
+        "ls": [
+            "."
+        ],
+        "server":"client/resources",
+
+        "#dev": [
+            "eslint",
+            "tsc",
+            "oxlinttypeaware",
+            "biome"
+        ]
+    },
+    "keywords": [],
+    "contributes": {
+        "commands": [
+            {
+                "command": "Scriptsmon.start",
+                "title": "Scriptsmon: start"
+            },
+            {
+                "command": "Scriptsmon.runner.play",
+                "title": "Play",
+                "icon": "$(play)"
+            },
+            {
+                "command": "Scriptsmon.runner.debug",
+                "title": "Debug",
+                "icon": "$(debug)"
+            },
+            {
+                "command": "Scriptsmon.webview.open",
+                "title": "Open Webview"
+            },
+            {
+                "command": "Scriptsmon.startWatching",
+                "title": "Start Watching"
+            }
+        ],
+        "menus": {
+            "view/item/context": [
+                {
+                    "command": "Scriptsmon.runner.play",
+                    "when": "view == Scriptsmon.tree && viewItem == 'runner'",
+                    "group": "inline"
+                },
+                {
+                    "command": "Scriptsmon.runner.debug",
+                    "when": "view == Scriptsmon.tree && viewItem == 'runner'",
+                    "group": "inline"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "panel": [
+                {
+                    "id": "scriptsmon-bottom-drawer",
+                    "title": "Scriptsmon Terminals",
+                    "icon": "$(terminal)"
+                }
+            ]
+        },
+        "views": {
+            "scriptsmon-bottom-drawer": [
+                {
+                    "type": "webview",
+                    "id": "Scriptsmon.webview",
+                    "name": "Scriptsmon web view2"
+                }
+            ]
+        }
+    },
+    "engines": {
+        "vscode": "^1.108.0"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.3.11",
+        "@eslint/js": "9.39.2",
+        "@types/lodash.clonedeep": "^4.5.9",
+        "@types/node": "25.0.6",
+        "@types/vscode": "^1.108.1",
+        "esbuild": "0.27.2",
+        "eslint-import-resolver-typescript": "4.4.4",
+        "eslint-plugin-import-x": "4.16.1",
+        "oxlint": "^1.38.0",
+        "oxlint-tsgolint": "^0.11.0",
+        "typescript": "5.9.3",
+        "typescript-eslint": "8.52.0"
+    },
+    "dependencies": {
+        "@homebridge/node-pty-prebuilt-multiarch": "^0.13.1",
+        "@yigal/base_types": "file:../base_types",
+        "@yigal/watch_runner": "^2.1.0",
+        "acorn": "^8.15.0",
+        "chokidar": "^5.0.0",
+        "lodash.clonedeep": "^4.5.0"
+    }
+}
