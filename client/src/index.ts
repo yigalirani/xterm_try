@@ -1,12 +1,12 @@
 import { Terminal } from '@xterm/xterm';
 import { FitAddon } from '@xterm/addon-fit';
-
-function doit(){
+function create_terminal(selector:string){
+ 
   const term = new Terminal();
   const fitAddon = new FitAddon();
   term.loadAddon(fitAddon);
 
-  const container = document.getElementById('xterm-container')!;
+  const container = document.querySelector<HTMLElement>(selector)!;
   term.open(container); 
   
   // Fit the terminal to its container
@@ -33,5 +33,9 @@ function doit(){
       term.write('**0')
     term.write('\r\n')
   }
+}
+function doit(){
+  create_terminal('#xterm1')
+  create_terminal('#xterm2')
 }
 doit()
