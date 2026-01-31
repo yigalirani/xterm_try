@@ -1,45 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xterm_try</title>
-    <link rel="stylesheet" href="./xterm.css">
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        width: 100vw;
-        overflow: hidden;
-      }
-      #xterm1{
-        border: 4px solid rebeccapurple;
-        background-color: rgb(139, 116, 161);
-        flex:1;
-      }
-      #xterm2 {
-        border: 4px solid rgb(231, 126, 35);
-        background-color: rgb(223, 188, 158);
-        flex:2;    
-       
-      }
-      
-      .splitter{
-        height: 100%;
-        width: 100%;
-        display: flex;
-      }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xterm_try</title>
+  <link rel="stylesheet" href="./xterm.css">
+  <link rel="stylesheet" href="./index.css">
+
 </head>
+
 <body>
-  <div class="splitter">
-    <div id="xterm1"></div>
+  <div id="control">
+    <button id="1">1</button>
+    <button id="2">2</button>
+    <button id="fit">fit</button>
+
+  </div>
+  <div class=terminals>
+    <div class="xterm_wrapper">
+    <div id="xterm1"></div></div>
     <div id="xterm2"></div>
   </div>
+
 </body>
 </html>
-<script src="./dist/index.js"  --icon-color: #ff0000;></script>
-<script>
-console.log('started top')
-
+<script src="./dist/index.js" --icon-color: #ff0000;></script>

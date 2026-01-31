@@ -5,7 +5,7 @@ async function call_build(){
       entryPoints: ["src/index.ts"],
       outfile: "resources/dist/index.js",
       bundle: true,
-      platform: "node",
+      platform: "browser",
       format: "esm",
       sourcemap: 'inline',
       minify: false,
